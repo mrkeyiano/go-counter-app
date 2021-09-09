@@ -41,7 +41,8 @@ func main() {
 
 	router := gin.Default()
 
-	router.GET("/:id", func(c *gin.Context) {
+
+	router.GET("/id/:id", func(c *gin.Context) {
 		ctx := context.Background()
 		id := c.Param("id")
 		val, err := r.Get(ctx, id).Result()
@@ -53,7 +54,7 @@ func main() {
 				}
 				return
 			}
-			c.String(http.StatusInternalServerError, "failed to get count")
+			c.String(http.StatusInternalServerError, "failed to get counted")
 		}
 		ct, err := strconv.Atoi(val)
 		if err != nil {
@@ -67,6 +68,7 @@ func main() {
 		return
 	})
 
+
 	router.GET("/ping", func(c *gin.Context) {
 		if _, err := r.Ping(context.Background()).Result(); err != nil {
 			c.Status(http.StatusInternalServerError)
@@ -74,6 +76,7 @@ func main() {
 			c.Status(http.StatusOK)
 		}
 	})
+
 
 	_ = router.Run(fmt.Sprintf(":%d", c.Port))
 }
