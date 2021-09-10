@@ -11,14 +11,16 @@ In this task, i made use of the following dependencies for the infrastructure
 
 **deploy application**
 * make sure docker desktop is up and running and kubernetes is enabled in preference
+
 * run command below to kickstart deployment
 
-```make app```
+  ```make app```
+
 
 * run command below to reset deployment for a fresh start
-  
 
   ```make reset```
+
 
 * made slight modification to the increment counter endpoint due to gin-gonic conflict with wildcard routes, so instead of accessing the endpoint via `/ID`, it can be accessed via `/id/ID` 
 
