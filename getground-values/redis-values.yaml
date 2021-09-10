@@ -5,14 +5,24 @@
 replicaCount: 1
 
 image:
-  repository: redis:alpine
+  repository: redis
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "latest"
+  tag: "alpine"
 
+probes:
+  enabled: true
+
+
+probeRoute: /
+redis:
+  enabled: true
+  password: "testest"
+
+targetPort: 6379
 imagePullSecrets: []
-nameOverride: "getground_redis"
-fullnameOverride: "getground_redis"
+nameOverride: "getground-redis"
+fullnameOverride: "getground-redis"
 
 serviceAccount:
   # Specifies whether a service account should be created
@@ -43,6 +53,7 @@ deployment:
 
 service:
   type: ClusterIP
+  port: 6379
   ports:
     - name: http
       port: 6379
