@@ -83,8 +83,9 @@ spec:
             timeoutSeconds: 5
             {{- else }}
             httpGet:
-              path: {{ .Values.probeRoute }}
+              path: {{ .Values.probereadyRoute }}
               port: http
+
             {{- end }}
           {{- end }}
           resources:

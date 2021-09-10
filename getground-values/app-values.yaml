@@ -56,7 +56,7 @@ probes:
 
 
 probeRoute: /ping
-
+probereadyRoute: /id/sss
 redis:
   enabled: false
 
